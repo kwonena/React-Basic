@@ -12,7 +12,7 @@ class Habit extends Component {
   };
 
   handleDelete = () => {
-    this.props.onIDelete(this.props.habit);
+    this.props.onDelete(this.props.habit);
   };
 
   render() {
