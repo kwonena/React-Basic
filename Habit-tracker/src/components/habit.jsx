@@ -4,11 +4,11 @@ class Habit extends Component {
   // Habit 컴포넌트는 자체 내 state는 존재하지 않고,
   // 외부에서 props로 전달 받은 habit 오브젝트의 데이터를 보여주기만 함
   handleIncrement = () => {
-    this.props.onIncreament(this.props.habit);
+    this.props.onIncrement(this.props.habit);
   };
 
   handleDecrement = () => {
-    this.props.onDecreament(this.props.habit);
+    this.props.onDecrement(this.props.habit);
   };
 
   handleDelete = () => {
@@ -16,7 +16,7 @@ class Habit extends Component {
   };
 
   render() {
-    const {name, count} = this.this.props.habit;
+    const { name, count } = this.props.habit;
     return (
       <li className="habit">
         <span className="habit-name">{name}</span>
@@ -33,8 +33,10 @@ class Habit extends Component {
         >
           <i className="fas fa-minus-square"></i>
         </button>
-        <button className="habit-button habit-delete"
-        onClick={this.handleDelete}>
+        <button
+          className="habit-button habit-delete"
+          onClick={this.handleDelete}
+        >
           <i class="fas fa-trash-alt"></i>
         </button>
       </li>
