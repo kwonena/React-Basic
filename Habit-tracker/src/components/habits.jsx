@@ -22,7 +22,7 @@ class Habits extends Component {
   render() {
     return (
       <>
-        <HabitAddForm  onAdd={this.handleAdd}/>
+        <HabitAddForm onAdd={this.handleAdd} />
         <ul>
           {this.props.habits.map((habit) => (
             <Habit
@@ -35,6 +35,9 @@ class Habits extends Component {
             // Habit 컴포넌트에게 prop 이름으로 전달한 콜백함수를 호출하라고 함
           ))}
         </ul>
+        <button className="habits-reset" onClick={this.props.onReset}>
+          Reset All
+        </button>
       </>
     );
   }

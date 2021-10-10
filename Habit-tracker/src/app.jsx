@@ -39,7 +39,16 @@ class App extends Component {
   };
 
   handleAdd = (name) => {
-    const habits = [...this.state.habits, {id:Date.now(), name, count: 0}];
+    const habits = [...this.state.habits, { id: Date.now(), name, count: 0 }];
+    this.setState({ habits });
+  };
+
+  handleReset = () => {
+    // 새로운 데이터를 만들때 map을 이용
+    const habits = this.state.habits.map((habit) => {
+      habit.count = 0;
+      return habit;
+    });
     this.setState({ habits });
   };
 
@@ -55,6 +64,7 @@ class App extends Component {
           onDecrement={this.handleDecrement}
           onDelete={this.handleDelete}
           onAdd={this.handleAdd}
+          onReset={this.handleReset}
         />
       </>
     );
