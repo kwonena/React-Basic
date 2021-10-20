@@ -16,19 +16,23 @@ class App extends Component {
   // this.handleIncrement가 habit 인자로 전달됨
   // 리액트는 state를 직접 수정하는 것이 안 좋음
   handleIncrement = (habit) => {
-    const habits = [...this.state.habits];
-    // ...(spread operator)은 기존의 배열을 복붙해줌
-    // 직접적으로 배열의 state를 수정하는 것은 좋지 않아서 새롭게 만든 것
-    const index = habits.indexOf(habit);
-    habits[index].count++;
+    const habits = this.state.habits.map((item) => {
+      if (item.id === habit.id) {
+        return { ...habit, count: habit.count + 1 };
+      }
+      return item;
+    });
     this.setState({ habits }); // key와 value의 값이 같다면 하나만 적어줘도 됨
   };
 
   handleDecrement = (habit) => {
-    const habits = [...this.state.habits];
-    const index = habits.indexOf(habit);
-    const count = habits[index].count - 1;
-    habits[index].count = count < 0 ? 0 : count;
+    const habits = this.state.habits.map((item) => {
+      if (item.id === habit.id) {
+        const count = habit.count - 1;
+        return { ...habit, count: count < 0 ? 0 : count };
+      }
+      return item;
+    });
     this.setState({ habits });
   };
 
@@ -46,7 +50,9 @@ class App extends Component {
   handleReset = () => {
     // 새로운 데이터를 만들때 map을 이용
     const habits = this.state.habits.map((habit) => {
-      habit.count = 0;
+      if (habit.count !== 0) { // 0이 아닐때만 업데이트
+        return { ...habit, count: 0 };
+      }
       return habit;
     });
     this.setState({ habits });

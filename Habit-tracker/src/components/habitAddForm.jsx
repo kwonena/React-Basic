@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-
-class HabitAddForm extends Component {
+import React, { PureComponent } from "react";
+// PureComponent : 최상위 데이터가 변하지 않으면, rende함수 실행X (re-rendering)
+class HabitAddForm extends PureComponent {
   formRef = React.createRef();
   inputRef = React.createRef();
 
