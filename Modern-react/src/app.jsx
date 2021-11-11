@@ -1,8 +1,8 @@
 import "./app.css";
-import Counter from "./Counter";
+import InputSample from "./inputSample";
 
 function App() {
-  return <Counter />;
+  return <InputSample />;
 }
 
 export default App;
