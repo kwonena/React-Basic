@@ -1,36 +1,20 @@
 import React from "react";
 
-function User({ user }) {
+function User({ user, onRemove }) {
+  const { username, email, id } = user;
   return (
     <div>
-      <b>{user.username}</b> <span>{user.email}</span>
+      <b>{username}</b> <span>{email}</span>
+      <button onClick={() => onRemove(id)}>삭제</button>
     </div>
   );
 }
 
-function UserList() {
-  const users = [
-    {
-      id: 1,
-      username: "kwon",
-      email: "aaa@gmail.com",
-    },
-    {
-      id: 2,
-      username: "e",
-      email: "bbb@gmail.com",
-    },
-    {
-      id: 3,
-      username: "na",
-      email: "ccc@gmail.com",
-    },
-  ];
-
+function UserList({ users, onRemove }) {
   return (
     <div>
       {users.map((user) => (
-        <User user={user} key={user.id} /> // 원소 구별을 효율적으로 하기 위해 key 필요ㅌ
+        <User user={user} key={user.id} onRemove={onRemove} /> // 원소 구별을 효율적으로 하기 위해 key 필요
       ))}
     </div>
   );
